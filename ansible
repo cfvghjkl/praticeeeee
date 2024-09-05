@@ -1,0 +1,17 @@
+[webservers]
+10.14.20.27
+
+---
+- name: Install Nginx on web servers
+  hosts: webservers
+  become: yes
+  tasks:
+    - name: Ensure Nginx is installed
+      yum:
+        name: nginx
+        state: present
+
+    - name: Ensure Nginx is running
+      service:
+        name: nginx
+        state: started
